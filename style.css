@@ -66,7 +66,10 @@ nav{display:flex;align-items:center;justify-content:space-between;height:92px}
 .nav-cta::after{display:none}
 .nav-cta:hover{background:var(--gold);color:var(--navy-deep)!important}
 .burger{display:none;flex-direction:column;gap:6px;cursor:pointer;background:none;border:0;padding:8px}
-.burger span{width:26px;height:1.5px;background:#fff;transition:.3s}
+.burger span{width:26px;height:1.5px;background:#fff;transition:transform .35s var(--ease),opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
 /* HERO — single still frame, no slider */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--navy-deep);overflow:hidden}
@@ -249,10 +252,12 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:120px 0 40
 @media(max-width:860px){
   .wrap{padding:0 24px}
   .pad{padding:96px 0}
-  .navlinks{position:fixed;inset:0;background:var(--navy-deep);flex-direction:column;justify-content:center;gap:30px;transform:translateX(100%);transition:transform .5s var(--ease)}
+  .navlinks{position:fixed;inset:0;z-index:200;background:var(--navy-deep);flex-direction:column;justify-content:center;gap:36px;transform:translateX(100%);transition:transform .5s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch}
   .navlinks.open{transform:none}
-  .navlinks a{font-size:18px}
-  .burger{display:flex}
+  .navlinks a{font-size:20px}
+  .burger{display:flex;position:relative;z-index:210}
+  html.nav-open,body.nav-open{overflow:hidden}
+  header.nav-open{backdrop-filter:none}
   .why-grid{grid-template-columns:1fr}
   .markets-grid{grid-template-columns:1fr;gap:48px}
   .trust-grid{grid-template-columns:1fr;gap:56px}

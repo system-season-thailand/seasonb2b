@@ -2,8 +2,25 @@ const hdr=document.getElementById('hdr');
 addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>40),{passive:true});
 
 const burger=document.getElementById('burger'),menu=document.getElementById('menu');
-burger.addEventListener('click',()=>menu.classList.toggle('open'));
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+
+function openNav(){
+  menu.classList.add('open');
+  burger.classList.add('open');
+  hdr.classList.add('nav-open');
+  document.documentElement.classList.add('nav-open');
+  document.body.classList.add('nav-open');
+}
+function closeNav(){
+  menu.classList.remove('open');
+  burger.classList.remove('open');
+  document.documentElement.classList.remove('nav-open');
+  document.body.classList.remove('nav-open');
+  setTimeout(()=>hdr.classList.remove('nav-open'),500);
+}
+
+burger.addEventListener('click',()=>menu.classList.contains('open')?closeNav():openNav());
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNav();});
 
 const io=new IntersectionObserver((es)=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
