@@ -24,6 +24,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+html{overflow-x:hidden}
 body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.05;letter-spacing:-.012em}
 a{color:inherit;text-decoration:none}
@@ -304,6 +305,8 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:120px 0 40
   form{padding:32px 18px}
   /* Partners */
   .logo-grid{grid-template-columns:repeat(2,1fr)}
+  .logo-cell{padding:16px 10px}
+  .logo-cell span{font-size:15px;letter-spacing:.02em}
   /* Footer */
   footer{padding:72px 0 28px}
   .foot-top{gap:28px;padding-bottom:40px}
